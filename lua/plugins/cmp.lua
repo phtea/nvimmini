@@ -1,28 +1,35 @@
 return {
-  "hrsh7th/nvim-cmp",
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    "L3MON4D3/LuaSnip",
-    "saadparwaiz1/cmp_luasnip",
-  },
-  config = function()
-    local cmp = require("cmp")
+	'saghen/blink.cmp',
+	dependencies = 'rafamadriz/friendly-snippets',
+	version = '*',
+	opts = {
+		keymap = {
+			preset = 'none',
+			['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
 
-    cmp.setup({
-      mapping = cmp.mapping.preset.insert({
-        ["<Tab>"] = cmp.mapping.select_next_item(),
-        ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-      }),
-      sources = {
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-      },
-      snippet = {
-        expand = function(args)
-          require("luasnip").lsp_expand(args.body)
-        end,
-      },
-    })
-  end,
+			['<Tab>'] = { 'select_and_accept', 'fallback' },
+
+			['<C-n>'] = { 'snippet_forward', 'fallback_to_mappings' },
+			['<C-p>'] = { 'snippet_backward', 'fallback_to_mappings' },
+
+			['<C-j>'] = { 'select_next', 'fallback' },
+			['<C-k>'] = { 'select_prev', 'fallback' },
+
+			['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
+			['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
+		},
+
+		sources = { default = { 'lsp', 'snippets', }, },
+
+		signature = {
+			enabled = true,
+			window = { show_documentation = true, },
+		},
+
+		cmdline = { enabled = false, }, -- disable in command mode!!
+
+		completion = {
+			documentation = { auto_show = true, auto_show_delay_ms = 500, },
+		}
+	},
 }
