@@ -19,7 +19,7 @@ return {
 			['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
 		},
 
-		sources = { default = { 'lsp', 'snippets', }, },
+		-- sources = { default = { 'lsp', 'snippets',  }, },
 
 		signature = {
 			enabled = true,
@@ -27,5 +27,9 @@ return {
 		},
 
 		cmdline = { enabled = false, }, -- disable in command mode!!
+
+		completion = {
+			documentation = { auto_show = true, auto_show_delay_ms = 100, },
+		}
 	},
 }
