@@ -11,6 +11,7 @@ return {
       pickers = {
         lsp_references = { initial_mode = "normal" },
         lsp_definitions = { initial_mode = "normal" },
+        lsp_type_definitions = { initial_mode = "normal" },
       },
     })
 
@@ -27,5 +28,6 @@ return {
     vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
     vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Find references" })
     vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Find definitions" })
+    vim.keymap.set("n", "gt", builtin.lsp_type_definitions, { desc = "Find type definitions" })
   end,
 }
