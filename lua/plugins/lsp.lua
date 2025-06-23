@@ -4,7 +4,7 @@ return {
 		local lspconfig = require('lspconfig')
 		-- lspconfig.pyright.setup{}
 		lspconfig.solargraph.setup{}
-		lspconfig.ruby_lsp.setup{}
+		-- lspconfig.ruby_lsp.setup{}
 		lspconfig.clangd.setup{}
 
 		vim.api.nvim_create_autocmd("LspAttach", {
