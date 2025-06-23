@@ -17,3 +17,6 @@ vim.keymap.set("n", "<Space>", '"+', { noremap = true })
 
 -- Очистка поиска
 vim.keymap.set("n", "<leader><Space>", ":nohlsearch<CR>", { noremap = true })
+
+-- Run code using `make run`
+vim.keymap.set("n", "<leader>m", ":w<CR>:!make run<CR>", { noremap = true })
