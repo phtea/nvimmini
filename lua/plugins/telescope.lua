@@ -32,9 +32,8 @@ return {
     vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
     vim.keymap.set("n", "<leader>fG", function() builtin.live_grep({ hidden = true }) end, { desc = "Live grep (all)" })
 
-    vim.keymap.set("n", "<leader>*", function()
-	    require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
-    end, { desc = "Grep word under cursor" })
+    vim.keymap.set("n", "<leader>*", function() builtin.grep_string({ search = vim.fn.expand("<cword>") }) end, { desc = "Grep word under cursor" })
+    vim.keymap.set("n", "<leader>8", function() builtin.grep_string({ search = vim.fn.expand("<cword>") }) end, { desc = "Grep word under cursor" })
 
 
     vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find buffers" })
