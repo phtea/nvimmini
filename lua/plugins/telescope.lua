@@ -35,6 +35,7 @@ return {
     vim.keymap.set("n", "<leader>*", function() builtin.grep_string({ search = vim.fn.expand("<cword>") }) end, { desc = "Grep word under cursor" })
     vim.keymap.set("n", "<leader>8", function() builtin.grep_string({ search = vim.fn.expand("<cword>") }) end, { desc = "Grep word under cursor" })
 
+    vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find, { desc = "Grep in current file" })
 
     vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find buffers" })
     vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Find references" })
