@@ -1,13 +1,20 @@
--- Telescope
 return {
   "nvim-telescope/telescope.nvim",
-  dependencies = { "nvim-lua/plenary.nvim" },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "ThePrimeagen/git-worktree.nvim",           -- Git worktree manager
+  },
   config = function()
     local telescope = require("telescope")
     local builtin = require("telescope.builtin")
     local themes = require("telescope.themes")
 
     telescope.setup({
+      extensions = {
+        git_worktree = {
+          change_directory_command = "cd", -- or "tcd", or "lcd"
+        },
+      },
       pickers = {
         lsp_references = { initial_mode = "normal" },
         lsp_definitions = { initial_mode = "normal" },
@@ -16,6 +23,17 @@ return {
         grep_string = { initial_mode = "normal" },
       },
     })
+
+    telescope.load_extension("git_worktree")
+
+    -- Optional: Set keymaps for worktree management
+    vim.keymap.set("n", "<leader>fw", function()
+      telescope.extensions.git_worktree.git_worktrees(themes.get_dropdown({}))
+    end, { desc = "Switch worktree" })
+
+    vim.keymap.set("n", "<leader>fW", function()
+      telescope.extensions.git_worktree.create_git_worktree(themes.get_dropdown({}))
+    end, { desc = "Create new worktree" })
 
     -- Remove default LSP keymaps if present
     pcall(vim.keymap.del, "n", "gri")
