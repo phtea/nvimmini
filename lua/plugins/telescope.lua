@@ -20,6 +20,22 @@ return {
     })
 
     telescope.load_extension("git_worktree")
+    
+    -- Hooks for git-worktree
+    local Hooks = require("git-worktree.hooks")
+    local config = require('git-worktree.config')
+    local update_on_switch = Hooks.builtins.update_current_buffer_on_switch
+
+    -- Update buffers when switching
+    Hooks.register(Hooks.type.SWITCH, function (path, prev_path)
+	    vim.notify("Moved from " .. prev_path .. " to " .. path)
+	    update_on_switch(path, prev_path)
+    end)
+
+    -- Handle worktree deletion
+    Hooks.register(Hooks.type.DELETE, function ()
+	    vim.cmd(config.update_on_change_command)
+    end)
 
     vim.keymap.set("n", "<leader>fw", function()
       telescope.extensions.git_worktree.git_worktree(themes.get_dropdown({ initial_mode = "normal" }))
