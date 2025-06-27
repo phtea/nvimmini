@@ -2,7 +2,7 @@ return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "phtea/git-worktree.nvim",
+    "polarmutex/git-worktree.nvim",
   },
   config = function()
     local telescope = require("telescope")
@@ -22,7 +22,7 @@ return {
     telescope.load_extension("git_worktree")
 
     vim.keymap.set("n", "<leader>fw", function()
-      telescope.extensions.git_worktree.git_worktrees(themes.get_dropdown({ initial_mode = "normal" }))
+      telescope.extensions.git_worktree.git_worktree(themes.get_dropdown({ initial_mode = "normal" }))
     end, { desc = "Switch worktree" })
 
     -- Remove default LSP keymaps if present
