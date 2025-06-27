@@ -1,7 +1,7 @@
--- Цветовая схема
-vim.cmd.colorscheme("wildcharm") -- заменим позже, если нужно
+-- Colorscheme
+vim.cmd.colorscheme("wildcharm")
 
--- Поиск и интерфейс
+-- Search and interface
 vim.opt.path:append("**")
 vim.opt.number = true
 vim.opt.showcmd = true
