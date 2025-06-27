@@ -2,7 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 	config = function()
 		local lspconfig = require('lspconfig')
-		-- lspconfig.pyright.setup{}
+		lspconfig.pyright.setup{}
 		lspconfig.solargraph.setup{}
 		-- lspconfig.ruby_lsp.setup{}
 		lspconfig.clangd.setup{}
@@ -22,6 +22,26 @@ return {
 				vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 			end,
 		})
+		-- По умолчанию диагностики выключены
 		vim.diagnostic.enable(false, …)
+
+		-- 🔀 Команда Toggle
+		local diagnostics_enabled = false
+
+		vim.api.nvim_create_user_command("LspToggleDiagnostic", function()
+			diagnostics_enabled = not diagnostics_enabled
+
+			if diagnostics_enabled then
+				vim.diagnostic.enable(true)
+				vim.diagnostic.config({
+					virtual_text = false,
+					virtual_lines = true,
+				})
+				print("✅ LSP diagnostics enabled (virtual lines)")
+			else
+				vim.diagnostic.enable(false)
+				print("🚫 LSP diagnostics disabled")
+			end
+		end, {})
 	end,
 }
