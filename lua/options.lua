@@ -1,6 +1,10 @@
 -- Colorscheme
 vim.cmd.colorscheme("wildcharm")
 
+vim.o.statusline = "%{v:lua.require'git_branch'.get_branch()}%f %h%m%r%=%y %p%%"
+vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'NONE', ctermbg = 'NONE' })
+vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = 'NONE', ctermbg = 'NONE' })
+
 -- Search and interface
 vim.opt.path:append("**")
 vim.opt.number = true
