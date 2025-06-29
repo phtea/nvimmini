@@ -16,6 +16,7 @@ return {
 		lsp_type_definitions = { initial_mode = "normal" },
 		buffers = { initial_mode = "normal" },
 		grep_string = { initial_mode = "normal" },
+		diagnostics = { initial_mode = "normal" },
 	    },
 	})
 
@@ -53,6 +54,8 @@ return {
 	vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
 	vim.keymap.set("n", "<leader>fF", function() builtin.find_files({ hidden = true }) end, { desc = "Find files (all)" })
 
+	vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Find diagnostics" })
+
 	vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
 	vim.keymap.set("n", "<leader>fG", function() builtin.live_grep({ hidden = true }) end, { desc = "Live grep (all)" })
 
@@ -62,6 +65,7 @@ return {
 	vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find, { desc = "Grep in current file" })
 
 	vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find buffers" })
+
 	vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Find references" })
 	vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Find definitions" })
 	vim.keymap.set("n", "gt", builtin.lsp_type_definitions, { desc = "Find type definitions" })
