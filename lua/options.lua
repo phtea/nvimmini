@@ -8,6 +8,7 @@ vim.cmd([[
   hi LineNr guifg=#80a0ff ctermfg=LightBlue
   hi LineNrAbove guifg=Gray ctermfg=Gray
   hi LineNrBelow guifg=Gray ctermfg=Gray
+  set signcolumn=yes
 ]])
 
 -- Relative line number
