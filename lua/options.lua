@@ -5,7 +5,16 @@ vim.cmd([[
   hi Normal guibg=NONE ctermbg=NONE
   hi NormalNC guibg=NONE ctermbg=NONE
   hi EndOfBuffer guibg=NONE ctermbg=NONE
+  hi LineNr guifg=#80a0ff ctermfg=LightBlue
+  hi LineNrAbove guifg=Gray ctermfg=Gray
+  hi LineNrBelow guifg=Gray ctermfg=Gray
 ]])
+
+-- Relative line number
+vim.wo.relativenumber = true
+
+-- Scrolloff
+vim.o.scrolloff = 10
 
 vim.o.statusline = "%{v:lua.require'git_branch'.get_branch()}%f %h%m%r%=%y %p%%"
 vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'NONE', ctermbg = 'NONE' })
