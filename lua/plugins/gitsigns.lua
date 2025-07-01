@@ -13,7 +13,7 @@ return {
 		-- Reset hunk
 		vim.keymap.set('n', '<leader>gr', gs.reset_hunk, opts)
 		-- Preview hunk
-		vim.keymap.set('n', '<leader>gp', gs.preview_hunk, opts)
+		vim.keymap.set('n', '<leader>gh', gs.preview_hunk, opts)
 	    end
 	}
     end
